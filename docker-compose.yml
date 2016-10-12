@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+
+  7.0-fpm:
+    build:  ./7.0/fpm
+    image:  cubicmushroom/php-7.0-fpm
+    depends_on:
+      - 7.0-fpm-dev
+
+  7.0-fpm-dev:
+    build:  ./7.0/fpm/dev
+    image:  cubicmushroom/php-7.0-fpm-dev
