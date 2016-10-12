@@ -10,5 +10,5 @@ build:
 
 push:
 	for VERSION in $(VERSIONS) ; do \
-	  docker push cubicmushroom/php-$${VERSION} ; \
+	  docker push cubicmushroom/php:$${VERSION} ; \
 	done
