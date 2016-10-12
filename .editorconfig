@@ -1,0 +1,3 @@
+# Tab indentation (no size specified)
+[{Makefile, makefile}]
+indent_style = tab
