@@ -6,8 +6,6 @@ RUN apt-get update && apt-get upgrade -y
 RUN usermod -u 1000 www-data
 RUN groupmod -g 1000 www-data
 
-RUN echo $PATH
-
 RUN mkdir -p /usr/local/bin
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
