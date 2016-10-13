@@ -1,6 +1,6 @@
-VERSIONS := 7.0-fpm 7.0-fpm-dev
+VERSIONS := 7.0-fpm 7.0-fpm-dev 7.0-fpm-alpine 7.0-fpm-alpine-dev
 
-all: docker-login build push
+all: build push
 
 docker-login:
 	docker login
