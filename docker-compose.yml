@@ -11,3 +11,13 @@ services:
     image:  cubicmushroom/php:7.0-fpm-dev
     depends_on:
       - 7.0-fpm
+
+  7.0-fpm-alpine:
+    build:  ./7.0/fpm/alpine
+    image:  cubicmushroom/php:7.0-fpm-alpine
+
+  7.0-fpm-alpine-dev:
+    build:  ./7.0/fpm/alpine/dev
+    image:  cubicmushroom/php:7.0-fpm-alpine-dev
+    depends_on:
+      - 7.0-fpm-alpine
