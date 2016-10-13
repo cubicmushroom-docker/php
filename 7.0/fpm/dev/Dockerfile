@@ -3,9 +3,6 @@ MAINTAINER Toby Griffiths <toby@cubicmushroom.co.uk>
 
 RUN apt-get update && apt-get upgrade -y
 
-RUN usermod -u 1000 www-data
-RUN groupmod -g 1000 www-data
-
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
 
