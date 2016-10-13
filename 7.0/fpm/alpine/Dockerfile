@@ -4,7 +4,7 @@ MAINTAINER Toby Griffiths <toby@cubicmushroom.co.uk>
 RUN apk update && apk upgrade -U -a
 
 # Renumber the user/group
-RUN deluser www-data ; delgroup www-data ; addgroup -S -g 1000 www-data ; adduser -SDu 1000 -G www-data www-data
+RUN deluser www-data ; addgroup -S -g 1000 www-data ; adduser -SDu 1000 -G www-data www-data
 
 RUN mkdir -p /usr/local/bin
 
