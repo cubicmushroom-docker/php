@@ -16,4 +16,4 @@ RUN sed -i '1 a xdebug.remote_autostart=1' /usr/local/etc/php/conf.d/docker-php-
     && sed -i '1 a xdebug.remote_enable=1' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && sed -i '1 a xdebug.remote_log=/tmp/xdebug.log' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
-RUN chmod 666 /tmp/xdebug.log
+RUN touch /tmp/xdebug.log && chmod 666 /tmp/xdebug.log
