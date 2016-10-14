@@ -3,6 +3,9 @@ MAINTAINER Toby Griffiths <toby@cubicmushroom.co.uk>
 
 RUN apk update && apk upgrade -U -a
 
+# Composer will need git installed sometimes
+RUN apk add git
+
 # Renumber the user/group
 RUN deluser www-data ; addgroup -S -g 1000 www-data ; adduser -SDu 1000 -G www-data www-data
 
