@@ -4,7 +4,7 @@ MAINTAINER Toby Griffiths <toby@cubicmushroom.co.uk>
 RUN apt-get update && apt-get upgrade -y
 
 # Composer will need git installed sometimes
-RUN apt-get install -y git && apt-get clean
+RUN apt-get install -y git unzip && apt-get clean
 
 RUN usermod -u 1000 www-data
 RUN groupmod -g 1000 www-data
