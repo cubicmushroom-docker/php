@@ -1,7 +1,7 @@
 FROM cubicmushroom/php:7.0-fpm
 MAINTAINER Toby Griffiths <toby@cubicmushroom.co.uk>
 
-RUN apt-get update && apt-get upgrade -y
+RUN apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y
 
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug

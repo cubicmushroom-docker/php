@@ -1,7 +1,7 @@
 FROM php:7.0-fpm
 MAINTAINER Toby Griffiths <toby@cubicmushroom.co.uk>
 
-RUN apt-get update && apt-get upgrade -y
+RUN apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y
 
 # Composer will need git installed sometimes
 RUN apt-get install -y git unzip && apt-get clean
