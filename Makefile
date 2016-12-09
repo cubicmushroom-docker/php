@@ -12,7 +12,7 @@ prepare:
 	cp -R ./scripts ./7.0/fpm/alpine/scripts
 
 build:
-	docker-compose build
+	docker-compose build --no-cache
 
 push:
 	for VERSION in $(VERSIONS) ; do \
