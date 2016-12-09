@@ -19,3 +19,12 @@ Composer
 --------
 
 All containers include composer.
+
+
+Building containers
+-------------------
+
+In order to build the containers you will first need to copy the script files into each version directory to avoid an 
+'out of scope error'.  You can do this by running…
+
+    $ make prepare
