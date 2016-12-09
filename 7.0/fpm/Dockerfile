@@ -1,17 +1,18 @@
 FROM php:7.0-fpm
 MAINTAINER Toby Griffiths <toby@cubicmushroom.co.uk>
 
-RUN apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y
-
-# Composer will need git installed sometimes
-RUN apt-get install -y git unzip && apt-get clean
+RUN apt-get update && \
+    apt-get upgrade -y &&\
+    apt-get dist-upgrade -y && \
+    apt-get install -y git unzip libicu-dev wget && \
+    apt-get clean && \
+    docker-php-ext-install intl
 
 RUN usermod -u 1000 www-data
 RUN groupmod -g 1000 www-data
 
 RUN mkdir -p /usr/local/bin
 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-    && php -r "if (hash_file('SHA384', 'composer-setup.php') === 'e115a8dc7871f15d853148a7fbac7da27d6c0030b848d9b3dc09e2a0388afed865e6a3d6b3c0fad45c48e2b5fc1196ae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
-    && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
-    && php -r "unlink('composer-setup.php');"
+ADD ./scripts/install_composer.sh /usr/local/bin/install_composer.sh
+
+RUN /usr/local/bin/install_composer.sh
