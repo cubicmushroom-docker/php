@@ -6,6 +6,8 @@ docker-login:
 	docker login
 
 prepare:
+	rm -Rf ./7.0/fpm/scripts
+	rm -Rf ./7.0/fpm/alpine/scripts
 	cp -R ./scripts ./7.0/fpm/scripts
 	cp -R ./scripts ./7.0/fpm/alpine/scripts
 
