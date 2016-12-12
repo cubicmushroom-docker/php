@@ -15,4 +15,6 @@ RUN mkdir -p /usr/local/bin
 
 ADD ./scripts/install_composer.sh /usr/local/bin/install_composer.sh
 
+RUN echo "Bust cache"
+
 RUN /usr/local/bin/install_composer.sh
