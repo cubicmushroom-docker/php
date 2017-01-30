@@ -1,4 +1,5 @@
-VERSIONS := 7.0-fpm 7.0-fpm-dev 7.0-fpm-alpine 7.0-fpm-alpine-dev
+VERSIONS := 7.1 7.0
+FLAVOURS := fpm fpm-alpine
 
 all: prepare build push
 
@@ -6,15 +7,23 @@ docker-login:
 	docker login
 
 prepare:
-	rm -Rf ./7.0/fpm/scripts
-	rm -Rf ./7.0/fpm/alpine/scripts
-	cp -R ./scripts ./7.0/fpm/scripts
-	cp -R ./scripts ./7.0/fpm/alpine/scripts
+	for VERSION in $(VERSIONS) ; do \
+		for FLAVOUR in $(FLAVOURS) ; do \
+			rm -Rf ./$${VERSION}/fpm/scripts ; \
+			rm -Rf ./$${VERSION}/fpm/alpine/scripts ; \
+			cp -R ./scripts ./$${VERSION}/fpm/scripts ; \
+			cp -R ./scripts ./$${VERSION}/fpm/alpine/scripts ; \
+		done ; \
+	done
+
 
 build:
 	docker-compose build --no-cache
 
 push:
 	for VERSION in $(VERSIONS) ; do \
-	  docker push cubicmushroom/php:$${VERSION} ; \
+		for FLAVOUR in $(FLAVOURS) ; do \
+			docker push cubicmushroom/php:$${VERSION}-$${FLAVOUR} ; \
+			docker push cubicmushroom/php:$${VERSION}-$${FLAVOUR}-dev ; \
+		done ; \
 	done
